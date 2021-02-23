@@ -1,0 +1,25 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:   
+    - label: Create
+      txNumber: 100
+      type: maximum-rate
+        opts:
+          tps: 100
+          step: 5
+          sampleInterval: 20
+          includeFailed: true
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 128000000
+          batchSize: 1
+monitors:
+  resource:
+  - module: docker
+    options:
+      interval: 5 
+      containers:
+      - all          

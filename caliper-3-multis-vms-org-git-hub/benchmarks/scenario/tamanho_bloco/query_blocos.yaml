@@ -1,0 +1,65 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: Query
+      txDuration: 300
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/queryCar.js
+        arguments:
+          assets: 10  
+          byteSize: 99000000
+          batchSize: 1   
+    - label: Query
+      txDuration: 300
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/queryCar.js
+        arguments:
+          assets: 10  
+          byteSize: 128000000
+          batchSize: 1   
+    - label: Query
+      txDuration: 300
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/queryCar.js
+        arguments:
+          assets: 10  
+          byteSize: 512000000
+          batchSize: 1 
+    - label: Query
+      txDuration: 300
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/queryCar.js
+        arguments:
+          assets: 10  
+          byteSize: 1024000000
+          batchSize: 1  
+    - label: Query
+      txDuration: 300
+      rateControl:
+          type: fixed-load
+          opts:
+            transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/queryCar.js
+        arguments:
+          assets: 10  
+          byteSize: 2048000000
+          batchSize: 1

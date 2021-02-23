@@ -1,0 +1,60 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:   
+    - label: Create
+      txDuration: 300
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 128000000
+          batchSize: 1 
+    - label: Create
+      txDuration: 300
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 256000000
+          batchSize: 1 
+    - label: Create
+      txDuration: 300
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 512000000
+          batchSize: 1 
+    - label: Create
+      txDuration: 300
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 1024000000
+          batchSize: 1  
+    - label: Create
+      txDuration: 300
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 2048000000
+          batchSize: 1

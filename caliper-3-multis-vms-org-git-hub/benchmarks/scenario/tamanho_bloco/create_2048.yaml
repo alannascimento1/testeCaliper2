@@ -1,0 +1,16 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:   
+    - label: Create
+      txNumber: 100
+      rateControl:
+        type: fixed-load
+        opts:
+          transactionLoad: 5
+      workload:
+        module: benchmarks/scenario/createCar.js
+        arguments:
+          byteSize: 2048000000
+          batchSize: 1

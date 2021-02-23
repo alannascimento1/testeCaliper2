@@ -1,0 +1,23 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: Create
+      txNumber: 200
+      rateControl:
+        type: maximum-rate
+        opts:
+          tps: 10
+          step: 5
+          sampleInterval : 20
+          includeFaield: true
+      workload:
+        module: benchmarks/scenario/createCar.js
+# o que é possivel entender sobre cada rodada:
+# 1 - Create: txNumber indica que será 80 transações serão geradas na primeira rodada.
+#       o fixed-rate enviará transações de entrada em um intervalo fixo especificado como TPS (transações por segundo).
+#       para a primeira rodada o tps é 10
+# 2 - Query: tx Duration indica que o teste com a transação queryCar será feita durante 10s.
+#      fixed-load: mantém uma carteira definida de transações dentro do sistema, modificando o TPS acionado. O resultado é o TPS máximo possível para o sistema enquanto mantém a carga de transação pendente.
+#      Com transactionLoad = 5 é possivel manter uma carga de transação SUT de 5
